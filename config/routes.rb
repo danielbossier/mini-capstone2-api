@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get "/one_product" => "products#one_product"
 
   post "/products" => "products#create"
+
+  patch "/products/:id" => "products#update"
 end
