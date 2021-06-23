@@ -15,12 +15,13 @@ class ProductsController < ApplicationController
       price: params["price"],
       image_url: params["image_url"],
       description: params["description"],
+      quantity: params["quantity"],
     )
     if product.save
       render json: product.as_json
     else
-      render json: {error: product.errors.full_messages}
-      status: :unprocessable_entity
+      render json: { error: product.errors.full_messages },
+             status: :unprocessable_entity
     end
   end
 
@@ -31,12 +32,13 @@ class ProductsController < ApplicationController
     product.price = params["price"] || product.price
     product.image_url = params["image_url"] || product.image_url
     product.description = params["description"] || product.description
-    
+    product.quantity = params["quantity"] || product.quantity
+
     if product.save
       render json: product.as_json
     else
-      render json: {error: product.errors.full_messages}
-      status: :unprocessable_entity
+      render json: { error: product.errors.full_messages },
+             status: :unprocessable_entity
     end
   end
 
