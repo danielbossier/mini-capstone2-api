@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
       image_url: params["image_url"],
       description: params["description"],
       quantity: params["quantity"],
+      supplier_id: params["supplier_id"],
     )
     if product.save
       render json: product.as_json
@@ -33,6 +34,7 @@ class ProductsController < ApplicationController
     product.image_url = params["image_url"] || product.image_url
     product.description = params["description"] || product.description
     product.quantity = params["quantity"] || product.quantity
+    product.supplier_id = params["supplier_id"] || product.supplier_id
 
     if product.save
       render json: product.as_json
