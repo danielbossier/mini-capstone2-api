@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
   def index
-    products = Product.all
-    render json: products
+    if current_user
+      products = Product.all
+      render json: products
+    else
+      render json: []
+    end
   end
 
   def show
