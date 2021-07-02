@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
       products = Product.all
       render json: products
     else
-      render json: []
+      render json: [], status: :unauthorized
     end
   end
 
